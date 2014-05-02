@@ -24,14 +24,14 @@ nets = dict(
 
 lirecoin=math.Object(
         P2P_PREFIX='d3edc9f1'.decode('hex'),
-        P2P_PORT=54353,
+        P2P_PORT=54350,
         ADDRESS_VERSION=19,
         RPC_PORT=54352,
         RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
             'LIREaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),                           
-        SUBSIDY_FUNC=lambda nBits, height: __import__('lire_subsidy').GetBlockBaseValue(nBits, height),
+        SUBSIDY_FUNC=lambda nBits, height: __import__('lirecoin_subsidy').GetBlockBaseValue(nBits, height),
         BLOCKHASH_FUNC=lambda data: pack.IntType(256).unpack(__import__('xcoin_hash').getPoWHash(data)),
         POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('xcoin_hash').getPoWHash(data)),
         BLOCK_PERIOD=150, # s
