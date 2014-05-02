@@ -12,7 +12,7 @@ nets = dict(
     
 
  lirecoin=math.Object(
-        PARENT=networks.nets['LIRE'],
+        PARENT=networks.nets['lirecoin'],
         SHARE_PERIOD=15, # seconds
         NEW_SHARE_PERIOD=15, # seconds
         CHAIN_LENGTH=24*60*60//10, # shares
@@ -25,9 +25,9 @@ nets = dict(
         P2P_PORT=4432,
         MIN_TARGET=4,
         MAX_TARGET=2**256//2**20 - 1,
-        PERSIST=False,
+        PERSIST=True,
         WORKER_PORT=4433,
-        BOOTSTRAP_ADDRS=' '.split(' '),
+        BOOTSTRAP_ADDRS='p2poolcoin.com'.split(' '),
         ANNOUNCE_CHANNEL='#p2pool-LIRE',
         VERSION_CHECK=lambda v: True,
     ),
